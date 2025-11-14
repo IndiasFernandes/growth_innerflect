@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Comments from '../components/Comments.astro';
+---
+
+<BaseLayout title="Team — Innerflect" description="Our team strengths and capabilities">
+  <Hero 
+    title="Our Team"
+    subtitle="A collective of creative technologists, designers, and strategists"
+  />
+
+  <Section class="team-intro-section">
+    <div class="container">
+      <div class="intro-content">
+        <p class="intro-text">
+          This is our internal team page where each member can share their strengths, skills, and what they bring to Innerflect. 
+          Add your profile, expertise areas, and how you contribute to our mission of harmonizing technology with soul.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="team-members-section">
+    <div class="container">
+      <h2 class="section-title centered">Team Members</h2>
+      <div class="members-grid">
+        <!-- Team member card template - duplicate and customize for each member -->
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="avatar-initial">TM</span>
+          </div>
+          <h3 class="member-name">Team Member Name</h3>
+          <p class="member-role">Role / Title</p>
+          <div class="member-strengths">
+            <h4 class="strengths-title">Strengths</h4>
+            <ul class="strengths-list">
+              <li>Add your key strength here</li>
+              <li>Another area of expertise</li>
+              <li>What you bring to the team</li>
+            </ul>
+          </div>
+          <div class="member-skills">
+            <h4 class="skills-title">Skills & Expertise</h4>
+            <div class="skills-tags">
+              <span class="skill-tag">Skill 1</span>
+              <span class="skill-tag">Skill 2</span>
+              <span class="skill-tag">Skill 3</span>
+            </div>
+          </div>
+          <div class="member-bio">
+            <p>Add a brief bio about yourself, your background, and what drives you in your work.</p>
+          </div>
+        </div>
+
+        <!-- Add more team member cards below -->
+        <!-- Copy the member-card div above and customize for each team member -->
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="avatar-initial">TM</span>
+          </div>
+          <h3 class="member-name">Team Member Name</h3>
+          <p class="member-role">Role / Title</p>
+          <div class="member-strengths">
+            <h4 class="strengths-title">Strengths</h4>
+            <ul class="strengths-list">
+              <li>Add your key strength here</li>
+              <li>Another area of expertise</li>
+              <li>What you bring to the team</li>
+            </ul>
+          </div>
+          <div class="member-skills">
+            <h4 class="skills-title">Skills & Expertise</h4>
+            <div class="skills-tags">
+              <span class="skill-tag">Skill 1</span>
+              <span class="skill-tag">Skill 2</span>
+              <span class="skill-tag">Skill 3</span>
+            </div>
+          </div>
+          <div class="member-bio">
+            <p>Add a brief bio about yourself, your background, and what drives you in your work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="add-member-section">
+    <div class="container">
+      <div class="add-member-content">
+        <h2 class="section-title centered">Add Your Profile</h2>
+        <p class="add-member-text">
+          To add your profile to this page, edit <code>src/pages/team.astro</code> and duplicate the team member card template above. 
+          Customize it with your name, role, strengths, skills, and bio.
+        </p>
+        <div class="instructions">
+          <h3 class="instructions-title">Instructions:</h3>
+          <ol class="instructions-list">
+            <li>Open <code>src/pages/team.astro</code> in your editor</li>
+            <li>Find the member-card template (look for "Team Member Name")</li>
+            <li>Copy the entire <code>&lt;div class="member-card"&gt;...&lt;/div&gt;</code> block</li>
+            <li>Paste it below the existing member cards</li>
+            <li>Replace the placeholder content with your information:
+              <ul>
+                <li>Name and role</li>
+                <li>Strengths list</li>
+                <li>Skills tags</li>
+                <li>Bio paragraph</li>
+              </ul>
+            </li>
+            <li>Save and commit your changes</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="container">
+      <Comments />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .section-title.centered {
+    text-align: center;
+  }
+
+  .team-intro-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal-light);
+    margin: 0;
+  }
+
+  .team-members-section {
+    background-color: var(--color-cream);
+  }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .member-card {
+    background-color: var(--color-cream-light);
+    border: 1px solid var(--color-cream-dark);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .member-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 26, 26, 0.1);
+  }
+
+  .member-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-sage) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .avatar-initial {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-charcoal);
+  }
+
+  .member-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-charcoal);
+    text-align: center;
+  }
+
+  .member-role {
+    text-align: center;
+    color: var(--color-gold);
+    font-weight: 500;
+    margin: 0 0 1.5rem 0;
+    font-size: 1rem;
+  }
+
+  .member-strengths {
+    margin-bottom: 1.5rem;
+  }
+
+  .strengths-title,
+  .skills-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .strengths-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .strengths-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    color: var(--color-charcoal-light);
+    line-height: 1.6;
+  }
+
+  .strengths-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-sage);
+    font-weight: bold;
+  }
+
+  .member-skills {
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background-color: var(--color-sage-light);
+    color: var(--color-charcoal);
+    padding: 0.4rem 0.8rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .member-bio {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-cream-dark);
+  }
+
+  .member-bio p {
+    color: var(--color-charcoal-light);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .add-member-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .add-member-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .add-member-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal-light);
+    margin: 0 0 2rem 0;
+    text-align: center;
+  }
+
+  .instructions {
+    background-color: var(--color-cream);
+    border: 1px solid var(--color-cream-dark);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  .instructions-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .instructions-list {
+    color: var(--color-charcoal-light);
+    line-height: 1.8;
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .instructions-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .instructions-list ul {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .instructions-list code {
+    background-color: var(--color-cream-dark);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--color-charcoal);
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .members-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .member-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
