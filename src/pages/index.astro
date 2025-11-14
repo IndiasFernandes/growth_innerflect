@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Comments from '../components/Comments.astro';
+---
+
+<BaseLayout title="Innerflect — Systems with Soul" description="Creative Technology Partner for Wellness & Arts">
+  <Hero 
+    title="Where Technology Meets Soul"
+    subtitle="Bespoke software and immersive installations that reflect your inner vision"
+    ctaText="Explore Our Services"
+    ctaLink="/services"
+  />
+
+  <Section class="mission-section">
+    <div class="container">
+      <div class="mission-content">
+        <h2 class="section-title">Creative Technology Partner for Wellness & Arts</h2>
+        <p class="mission-text">
+          InnerFlect harmonizes technology with your brand's soul, creating bespoke digital and sensory experiences 
+          that elevate your space and connect meaningfully with your audience.
+        </p>
+        <p class="mission-text">
+          We've evolved from a tech solutions studio to a creative technology partner—transforming how wellness centers, 
+          festivals, and creative spaces integrate technology that serves both profit and principle.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="principles-section">
+    <div class="container">
+      <h2 class="section-title centered">Our Core Principles</h2>
+      <div class="principles-grid">
+        <Card title="Soul-Aligned Systems">
+          <p>Technology that reflects your values and amplifies your mission, not just functionality.</p>
+        </Card>
+        <Card title="Revenue-Focused Solutions">
+          <p>Every system we build is designed to generate revenue, improve operations, and create measurable value.</p>
+        </Card>
+        <Card title="Bespoke Experiences">
+          <p>Custom solutions tailored to your unique brand, audience, and vision—no generic templates.</p>
+        </Card>
+        <Card title="Transformative Impact">
+          <p>We don't just build tools; we create experiences that transform how your business operates and grows.</p>
+        </Card>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="clients-section">
+    <div class="container">
+      <h2 class="section-title centered">Who We Serve</h2>
+      <div class="clients-grid">
+        <div class="client-card">
+          <h3 class="client-title">Wellness & Retreat Centers</h3>
+          <p class="client-description">
+            Boutique spas, yoga centers, and retreats seeking integrated booking systems, guest apps, 
+            and smart environments that enhance the wellness experience.
+          </p>
+        </div>
+        <div class="client-card">
+          <h3 class="client-title">Festivals & Creative Events</h3>
+          <p class="client-description">
+            Music and art events looking to differentiate with event apps, interactive installations, 
+            and seamless attendee experiences.
+          </p>
+        </div>
+        <div class="client-card">
+          <h3 class="client-title">Independent Artists & Creative Spaces</h3>
+          <p class="client-description">
+            Artists, venues, and cultural spaces adding technology to enhance installations, 
+            manage bookings, and create immersive experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Transform Your Space?</h2>
+        <p class="cta-text">Let's discuss how we can harmonize technology with your brand's soul.</p>
+        <div class="cta-buttons">
+          <a href="/contact" class="cta-button primary">Get Started</a>
+          <a href="/services" class="cta-button secondary">Explore Services</a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="container">
+      <Comments />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .mission-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .section-title.centered {
+    text-align: center;
+  }
+
+  .mission-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal-light);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .clients-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .client-card {
+    background-color: var(--color-cream);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .client-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-gold);
+  }
+
+  .client-description {
+    color: var(--color-charcoal-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-charcoal-light) 100%);
+    color: var(--color-cream);
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-cream);
+  }
+
+  .cta-text {
+    font-size: 1.2rem;
+    margin: 0 0 2rem 0;
+    color: var(--color-cream-dark);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .cta-button.primary {
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+  }
+
+  .cta-button.primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .cta-button.secondary {
+    background-color: transparent;
+    color: var(--color-cream);
+    border: 2px solid var(--color-gold);
+  }
+
+  .cta-button.secondary:hover {
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .principles-grid,
+    .clients-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-button {
+      width: 100%;
+    }
+  }
+</style>

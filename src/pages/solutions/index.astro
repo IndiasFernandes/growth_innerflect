@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import Card from '../../components/Card.astro';
+import Comments from '../../components/Comments.astro';
+---
+
+<BaseLayout title="Solutions — Innerflect" description="Modular solutions for mindful businesses">
+  <Hero 
+    title="Solutions That Scale"
+    subtitle="Ready-to-deploy systems designed for growth"
+  />
+
+  <Section class="solutions-section">
+    <div class="container">
+      <div class="solutions-grid">
+        <a href="/solutions/revenue-flow" class="solution-card-link">
+          <Card title="Innerflect Revenue Flow">
+            <p class="solution-tagline">A strategic clarity engine disguised as a dashboard.</p>
+            <p class="solution-description">
+              Minimalist AI-powered app that helps mindful businesses grow by showing what actually matters — weekly. 
+              Integrates with your existing tools to extract key growth signals and generate brutal, beautiful reports.
+            </p>
+            <div class="solution-features">
+              <span class="feature-tag">Weekly Insights</span>
+              <span class="feature-tag">AI-Powered</span>
+              <span class="feature-tag">Tool Integration</span>
+            </div>
+            <div class="solution-cta">Learn More →</div>
+          </Card>
+        </a>
+
+        <!-- Placeholder for future solutions -->
+        <div class="solution-card coming-soon">
+          <Card title="More Solutions Coming Soon">
+            <p>We're continuously developing new modular solutions to help your business grow. Check back soon for updates.</p>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="container">
+      <Comments />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .solutions-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .solution-card-link {
+    text-decoration: none;
+    display: block;
+  }
+
+  .solution-tagline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: var(--color-gold);
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+    font-style: italic;
+  }
+
+  .solution-description {
+    color: var(--color-charcoal-light);
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .solution-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-tag {
+    background-color: var(--color-sage-light);
+    color: var(--color-charcoal);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .solution-cta {
+    color: var(--color-gold);
+    font-weight: 600;
+    margin-top: 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .coming-soon {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .solutions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

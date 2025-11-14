@@ -1,0 +1,25 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+}
+
+const { class: className = '', id } = Astro.props;
+---
+
+<section class={`section ${className}`} id={id}>
+  <slot />
+</section>
+
+<style>
+  .section {
+    padding: 4rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+  }
+</style>
+

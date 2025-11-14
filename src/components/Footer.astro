@@ -1,0 +1,118 @@
+---
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-title">Innerflect</h3>
+        <p class="footer-tagline">Where Technology Meets Soul</p>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-heading">Connect</h4>
+        <ul class="footer-links">
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 class="footer-heading">Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="/solutions">All Solutions</a></li>
+          <li><a href="/solutions/revenue-flow">Revenue Flow</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Innerflect. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
+    padding: 3rem 0 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-gold);
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    color: var(--color-cream-dark);
+    margin: 0;
+  }
+
+  .footer-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-cream);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-links a {
+    color: var(--color-cream-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-gold);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--color-charcoal-light);
+    padding-top: 1.5rem;
+    text-align: center;
+    color: var(--color-cream-dark);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 0 1rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+

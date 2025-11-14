@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Comments from '../components/Comments.astro';
+---
+
+<BaseLayout title="Contact — Innerflect" description="Get in touch to discuss your project">
+  <Hero 
+    title="Let's Connect"
+    subtitle="Ready to harmonize technology with your brand's soul?"
+  />
+
+  <Section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="info-title">Get in Touch</h2>
+          <p class="info-text">
+            Whether you're looking to build revenue-generating systems, create immersive installations, 
+            or explore how technology can elevate your space, we're here to help.
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3 class="contact-label">Email</h3>
+              <p class="contact-value">hello@innerflect.com</p>
+            </div>
+            <div class="contact-item">
+              <h3 class="contact-label">Response Time</h3>
+              <p class="contact-value">Within 24 hours</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <h2 class="form-title">Send a Message</h2>
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="calendly-section">
+    <div class="container">
+      <div class="calendly-content">
+        <h2 class="calendly-title">Schedule a Call</h2>
+        <p class="calendly-text">
+          Prefer to talk? Book a time that works for you. We'll discuss your vision, explore possibilities, 
+          and see how we can help transform your space with technology.
+        </p>
+        <div class="calendly-placeholder">
+          <p class="placeholder-text">
+            Calendly integration placeholder. Replace with your Calendly embed code.
+          </p>
+          <p class="placeholder-note">
+            To add Calendly: Replace this section with your Calendly inline embed widget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="container">
+      <Comments />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .contact-section {
+    background-color: var(--color-cream-light);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info {
+    max-width: 500px;
+  }
+
+  .info-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .info-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal-light);
+    margin: 0 0 2rem 0;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    padding: 1.5rem;
+    background-color: var(--color-cream);
+    border-radius: 8px;
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .contact-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gold);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .contact-value {
+    font-size: 1.1rem;
+    color: var(--color-charcoal);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .contact-form-wrapper {
+    background-color: var(--color-cream);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-cream-dark);
+  }
+
+  .form-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .calendly-section {
+    background-color: var(--color-cream);
+  }
+
+  .calendly-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .calendly-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin: 0 0 1rem 0;
+    color: var(--color-charcoal);
+  }
+
+  .calendly-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-charcoal-light);
+    margin: 0 0 2rem 0;
+  }
+
+  .calendly-placeholder {
+    background-color: var(--color-cream-light);
+    border: 2px dashed var(--color-cream-dark);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+  }
+
+  .placeholder-text {
+    font-size: 1.1rem;
+    color: var(--color-charcoal-light);
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+  }
+
+  .placeholder-note {
+    font-size: 0.9rem;
+    color: var(--color-charcoal-light);
+    margin: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .contact-form-wrapper {
+      padding: 1.5rem;
+    }
+
+    .info-title,
+    .form-title,
+    .calendly-title {
+      font-size: 1.75rem;
+    }
+
+    .calendly-placeholder {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
+
