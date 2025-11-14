@@ -505,7 +505,7 @@ import Comments from '../../components/Comments.astro';
   .cta-text {
     font-size: 1.2rem;
     margin: 0 0 2rem 0;
-    color: var(--color-cream-dark);
+    color: var(--color-cream);
   }
 
   .cta-buttons {
@@ -543,6 +543,11 @@ import Comments from '../../components/Comments.astro';
   .cta-button.secondary:hover {
     background-color: var(--color-gold);
     color: var(--color-charcoal);
+  }
+
+  .cta-button.secondary:not(:hover) {
+    color: var(--color-cream);
+    border-color: var(--color-gold);
   }
 
   @media (max-width: 768px) {
