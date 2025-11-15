@@ -95,7 +95,7 @@
 - **8 min:** Challenges & Growth (Questions 14-15)
 - **10 min:** Role & Contribution (Question 16)
 - **8 min:** SpotPulse-Specific (Questions 17-18)
-- **5 min:** Open Discussion & Wrap-Up (Questions 19 + 20-22)
+- **5 min:** Open Discussion & Wrap-Up (Questions 19-22)
 
 ---
 
