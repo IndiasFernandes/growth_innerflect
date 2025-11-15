@@ -21,55 +21,47 @@
 
 ---
 
-## 🎯 Focus & Interests (10 min)
+## 🎯 Focus & Interests (8 min)
 
-10. **What areas do you want to focus on or get better at?**
-11. **What part of SpotPulse/Innerflect interests you most?** (e.g., dashboard UI, backend logic, integrations, AI/automation)
-12. **What kind of problems do you enjoy solving?**
-13. **What would you like to learn or explore more?**
+10. **What areas do you want to focus on or get better at, and what part of SpotPulse/Innerflect interests you most?** (e.g., dashboard UI, backend logic, integrations, AI/automation)
+11. **What kind of problems do you enjoy solving, and what would you like to learn or explore more?**
 
 ---
 
-## 🔍 Working Style & Preferences (10 min)
+## 🔍 Working Style & Preferences (8 min)
 
-14. **How do you prefer to work?** (e.g., solo deep work, pair programming, async communication, regular syncs)
-15. **What helps you do your best work?** (e.g., clear requirements, autonomy, collaboration, feedback)
-16. **How do you like to receive feedback?** (e.g., direct, written, in meetings, async)
-17. **What's your communication style?** (e.g., frequent updates, check-ins, async messages, detailed docs)
+12. **How do you prefer to work, and what helps you do your best work?** (e.g., solo deep work vs. collaboration, clear requirements, autonomy, feedback)
+13. **How do you like to receive feedback and communicate?** (e.g., direct vs. written, frequent updates vs. async messages)
 
 ---
 
-## ⚡ Challenges & Growth Areas (10 min)
+## ⚡ Challenges & Growth Areas (8 min)
 
-18. **What areas do you find challenging or want to improve?** (Be honest - this helps us support you)
-19. **What kind of support do you need to do your best work?**
-20. **What slows you down or frustrates you in your work?**
-21. **What would make your work life easier?**
+14. **What areas do you find challenging or want to improve, and what kind of support do you need?** (Be honest - this helps us support you)
+15. **What slows you down or frustrates you in your work, and what would make your work life easier?**
 
 ---
 
 ## 🚀 Role & Contribution (10 min)
 
-22. **What role do you see yourself taking in this project?** (e.g., lead developer, specialist, generalist)
-23. **Do you prefer:**
+16. **What role do you see yourself taking, and what's your preference?**
     - More coding-intensive work
     - Leading/coordinating (less coding, more planning/client-facing)
     - Mix of both
-24. **Are you comfortable with client-facing work?** (meetings, demos, feedback sessions)
-25. **What's your ideal balance between coding and other responsibilities?**
+    - Are you comfortable with client-facing work? (meetings, demos, feedback sessions)
+    - What's your ideal balance between coding and other responsibilities?
 
 ---
 
-## 🎨 SpotPulse-Specific (5 min)
+## 🎨 SpotPulse-Specific (8 min)
 
-26. **Looking at the SpotPulse product, what part excites you most?**
-27. **Which of the 3 tech role options resonates with you?** (if you've seen them)
+17. **Looking at SpotPulse, what excites you most, and which tech role option resonates with you?**
     - Option 1: By System Layer (Frontend/Backend/Intelligence)
     - Option 2: By Product Flow (Detection/Platform/Intelligence)
     - Option 3: By Technical Domain (Backend/Integration, Frontend/Client Relations, Intelligence)
     - Option 4: By Responsibility Scope (Integration Lead, Platform Developer, Intelligence)
     - Option 5: By Feature Area (Core Platform, Integrations, Intelligence)
-28. **What's your experience with:**
+18. **What's your experience with:**
     - API integrations (Mindbody, Cloudbeds, Resy, etc.)
     - Dashboard/UI development
     - Data visualization (charts, heat maps)
@@ -80,8 +72,7 @@
 
 ## 💡 Open Questions (5 min)
 
-29. **What questions do you have about the project or team?**
-30. **Is there anything else you'd like us to know about you, your work style, or what you're looking for?**
+19. **What questions do you have about the project or team, and is there anything else you'd like us to know?**
 
 ---
 
@@ -95,16 +86,16 @@
 
 ## 🎯 Meeting Flow Suggestion
 
-**Total Time: ~60 minutes**
+**Total Time: ~55 minutes**
 
 - **5 min:** Introductions & Ice Breakers (Questions 1-3)
 - **10 min:** Strengths (Questions 4-9)
-- **10 min:** Focus & Interests (Questions 10-13)
-- **10 min:** Working Style (Questions 14-17)
-- **10 min:** Challenges & Growth (Questions 18-21)
-- **10 min:** Role & Contribution (Questions 22-25)
-- **5 min:** SpotPulse-Specific (Questions 26-28)
-- **5 min:** Open Discussion & Wrap-Up (Questions 29-33)
+- **8 min:** Focus & Interests (Questions 10-11)
+- **8 min:** Working Style (Questions 12-13)
+- **8 min:** Challenges & Growth (Questions 14-15)
+- **10 min:** Role & Contribution (Question 16)
+- **8 min:** SpotPulse-Specific (Questions 17-18)
+- **5 min:** Open Discussion & Wrap-Up (Questions 19 + 20-22)
 
 ---
 
