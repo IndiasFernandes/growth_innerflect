@@ -79,19 +79,6 @@ import Comments from '../components/Comments.astro';
     </div>
   </Section>
 
-  <Section class="cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <h2 class="cta-title">Ready to Transform Your Space?</h2>
-        <p class="cta-text">Let's discuss how we can harmonize technology with your brand's soul.</p>
-        <div class="cta-buttons">
-          <a href="/contact" class="cta-button primary">Get Started</a>
-          <a href="/services" class="cta-button secondary">Explore Services</a>
-        </div>
-      </div>
-    </div>
-  </Section>
-
   <Section>
     <div class="container">
       <Comments />

@@ -33,7 +33,7 @@ jobs:
           server: growth.innerflect.tech
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
+          local-dir: ./
           server-dir: ./
           dangerous-clean-slate: false
           exclude: |
