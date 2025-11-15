@@ -357,8 +357,45 @@
             margin-bottom: 0;
         }
 
+        .card strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
         .card p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Cards inside callouts need white text */
+        .callout .card h3, .callout .card h4 {
+            color: white;
+        }
+
+        .callout .card {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .callout .card p,
+        .callout .card ul,
+        .callout .card li {
+            color: white;
+        }
+
+        .callout .card strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Accent text in callout cards should be lighter/brighter */
+        .callout .card span[style*="color: var(--accent)"] {
+            color: #f5e6d3 !important;
+            font-weight: 500;
+        }
+
+        /* Option headings inside callouts should be white */
+        .callout h4[style*="color: var(--primary)"] {
+            color: white !important;
         }
 
         /* Highlight Card */
@@ -1126,7 +1163,7 @@
                 <p><strong>We have a team already in place. Here are 5 possible ways to organize our 3 tech roles:</strong></p>
                 
                 <div style="margin-top: 2rem;">
-                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1.5rem;">Option 1: By System Layer</h4>
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 1: By System Layer</h4>
                     <div class="grid-3" style="margin-bottom: 3rem;">
                         <div class="card">
                             <h4>Integration & Data Developer</h4>
@@ -1158,7 +1195,7 @@
                         </div>
                     </div>
 
-                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1.5rem;">Option 2: By Product Flow</h4>
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 2: By Product Flow</h4>
                     <div class="grid-3" style="margin-bottom: 3rem;">
                         <div class="card">
                             <h4>Detection & Integration Developer</h4>
@@ -1190,7 +1227,7 @@
                         </div>
                     </div>
 
-                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1.5rem;">Option 3: By Technical Domain</h4>
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 3: By Technical Domain</h4>
                     <div class="grid-3" style="margin-bottom: 3rem;">
                         <div class="card">
                             <h4>Backend & Integration Developer</h4>
@@ -1222,7 +1259,7 @@
                         </div>
                     </div>
 
-                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1.5rem;">Option 4: By Responsibility Scope</h4>
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 4: By Responsibility Scope</h4>
                     <div class="grid-3" style="margin-bottom: 3rem;">
                         <div class="card" style="border: 2px solid var(--accent);">
                             <h4>Integration Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
@@ -1254,7 +1291,7 @@
                         </div>
                     </div>
 
-                    <h4 style="color: var(--primary); margin-top: 0; margin-bottom: 1.5rem;">Option 5: By Value Stream</h4>
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 5: By Value Stream</h4>
                     <div class="grid-3" style="margin-bottom: 3rem;">
                         <div class="card">
                             <h4>Data & Detection Developer</h4>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innerflect — Regeneration Cycle</title>
+    <title>Innerflect — Business Visual Overview</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
         * {
@@ -17,48 +17,666 @@
             --primary-light: #4a9d7f;
             --primary-dark: #1a3d2e;
             --accent: #d4a574;
+            --accent-light: #f5e6d3;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --bg-card: #ffffff;
             --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #1f2937;
-            background: #f9fafb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem;
+            color: var(--text);
+            background: var(--bg-alt);
+            overflow-x: hidden;
         }
 
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-light);
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-top: 0.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container */
         .container {
-            background: white;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 3rem 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            max-width: 1200px;
+        }
+
+        /* Improved spacing and visual hierarchy */
+        .container > section + section {
+            margin-top: 4rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 4rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        section:first-of-type {
+            margin-top: 0;
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
             width: 100%;
         }
 
-        h1 {
-            text-align: center;
+        section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
             color: var(--primary-dark);
-            margin-bottom: 2rem;
-            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            padding-top: 1rem;
         }
 
+        section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* Callout Box */
+        .callout {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid var(--accent);
+        }
+
+        .callout h3, .callout h4 {
+            color: white;
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .callout p {
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+        }
+
+        .callout ul {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .callout li {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .callout strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .info-box strong {
+            color: var(--primary);
+        }
+
+        .info-box ul {
+            margin-top: 0.5rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Improved visual grouping */
+        .grid-2 > *, .grid-3 > *, .grid-4 > * {
+            min-width: 0;
+        }
+
+        /* Card */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            color: var(--text);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            border-color: var(--primary-light);
+        }
+
+        .card h3, .card h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-top: 0;
+        }
+
+        .card ul {
+            color: var(--text);
+            line-height: 1.7;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+            padding-left: 1.25rem;
+        }
+
+        .card li {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .card strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Cards inside callouts need white text */
+        .callout .card h3, .callout .card h4 {
+            color: white;
+        }
+
+        .callout .card {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .callout .card p,
+        .callout .card ul,
+        .callout .card li {
+            color: white;
+        }
+
+        .callout .card strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        /* Accent text in callout cards should be lighter/brighter */
+        .callout .card span[style*="color: var(--accent)"] {
+            color: #f5e6d3 !important;
+            font-weight: 500;
+        }
+
+        /* Option headings inside callouts should be white */
+        .callout h4[style*="color: var(--primary)"] {
+            color: white !important;
+        }
+
+        /* Highlight Card */
+        .card-highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid var(--warning);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-highlight::before {
+            content: '⭐';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        .card-success {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid var(--success);
+        }
+
+        .card-danger {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid var(--danger);
+        }
+
+        /* Stats/Metrics */
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .stat:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--primary-light);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.4;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .badge-accent {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        .badge-success {
+            background: var(--success);
+        }
+
+        .badge-warning {
+            background: var(--warning);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            padding-left: 0.5rem;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        p {
+            margin: 1rem 0;
+            line-height: 1.7;
+        }
+
+        /* Better list styling */
+        ul, ol {
+            line-height: 1.8;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        /* Mermaid Diagram Container */
         .diagram-container {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
             overflow-x: auto;
         }
 
-        .mermaid {
+        /* Problem-Solution Layout */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .problem {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 50%);
+            border-left: 4px solid var(--danger);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .solution {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 50%);
+            border-left: 4px solid var(--success);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        /* Value Pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pillar {
             text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .pillar:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .pillar-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar h3 {
+            color: var(--primary);
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .pillar-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        footer strong {
+            color: white;
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
     <script>
@@ -71,24 +689,837 @@
                 primaryBorderColor: '#2c5f4e',
                 lineColor: '#4a9d7f',
                 secondaryColor: '#f5e6d3',
-                tertiaryColor: '#d4a574'
+                tertiaryColor: '#d4a574',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                fontSize: '16px'
             }
         });
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Regeneration Through Efficiency</h1>
-        <div class="diagram-container">
-            <div class="mermaid">
-                graph TD
-                    A[REVENUE<br/>€9k-€86k/mo] -->|funds| B[OPERATIONS<br/>SpotPulse]
-                    B -->|reduces| C[WASTE<br/>Less food/water/energy]
-                    C -->|enables| D[REGENERATION<br/>Better efficiency]
-                    D -->|creates| A
-            </div>
-        </div>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">I</div>
+                <span>Innerflect</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#who-we-are">Who We Are</a></li>
+                <li><a href="#concept">Concept & Why</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#path-forward">Path Forward</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Innerflect</h1>
+        <p class="tagline">Systems with Soul — Creative Technology for Regenerative Futures</p>
+        <p class="subtitle">Inner Reflection → Outer Regeneration</p>
     </div>
+
+    <div class="container">
+        <div class="callout" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <h4>🎯 SpotPulse: Your Entry Point to CEO Conversations</h4>
+            <p><strong>SpotPulse is more than a product—it's your ticket to the C-suite.</strong> With 4-21 day ROI and universal application across industries, SpotPulse gets you in the door with CEOs who need immediate results. Once you're in, you can introduce our full suite of solutions: Impact OS, RegenOS, Booking Engine, and more.</p>
+            <p style="margin-top: 1rem;"><strong>Fast ROI opens doors. SpotPulse proves value. Then you expand.</strong></p>
+        </div>
+        <!-- SECTION 1: WHO WE ARE -->
+        <section id="who-we-are">
+            <h2>1. Who We Are</h2>
+            
+            <div class="callout">
+                <h3>The Name: Innerflect</h3>
+                <p><strong>Innerflect = Inner Reflection</strong></p>
+                <p>The name embodies our core philosophy: technology that enables inner reflection—for individuals, organizations, and systems.</p>
+                <div class="grid-2" style="margin-top: 1.5rem;">
+                    <div>
+                        <strong>Inner</strong> — Looking within, understanding essence, finding clarity
+                    </div>
+                    <div>
+                        <strong>Flect</strong> — To bend, to reflect, to redirect toward what matters
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🎯 Mission</h3>
+                    <p>We solve the universal problem: empty spots are the silent killer of premium venues. Every empty yoga mat, vacant bed, or unfilled table = €0 forever.</p>
+                    <p><strong>Our Solution:</strong> SpotPulse turns empty inventory into automatic revenue—24/7, across wellness, hospitality, F&B, and events.</p>
+                </div>
+
+                <div class="card">
+                    <h3>🌱 Vision</h3>
+                    <p><strong>Intelligent Revenue Optimization for Premium Venues</strong></p>
+                    <p>We make premium venues more profitable AND more regenerative simultaneously. Better utilization = less waste, more efficiency, regeneration through operations.</p>
+                </div>
+
+                <div class="card">
+                    <h3>💫 Impact</h3>
+                    <p>Venues fill 34-72% more empty spots, see ROI in 4-21 days, and reduce waste while increasing revenue. Same fixed costs, higher yield, better regeneration.</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h4>Brand Values</h4>
+                <ul>
+                    <li><strong>Inner Reflection</strong> — Help venues understand their true capacity and reflect intelligently to the right guests</li>
+                    <li><strong>Honesty</strong> — Transparent about what the system does. Clear pricing, clear results, no black boxes.</li>
+                    <li><strong>Transparency</strong> — Clients see exactly how many spots were detected, which actions were taken, what revenue was generated</li>
+                    <li><strong>Regeneration Through Efficiency</strong> — Every filled spot = less waste, better resource utilization, more sustainable operations</li>
+                    <li><strong>Sovereignty</strong> — Clients control everything—which actions to enable, when to go auto, who to target</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CONCEPT AND WHY -->
+        <section id="concept">
+            <h2>2. Concept and Why — The Triple Bottom Line Approach</h2>
+            
+            <div class="callout">
+                <h3>The Universal Problem We Solve</h3>
+                <p><strong>Every venue with time-based inventory faces the same economic reality:</strong></p>
+                <ul>
+                    <li><strong>Empty spot at 6pm = €0 forever</strong> (can't resell yesterday's yoga class or Tuesday's table)</li>
+                    <li><strong>Fixed costs already paid</strong> (rent, staff, utilities, food prep, cleaning)</li>
+                    <li><strong>Empty inventory = pure profit loss</strong> (20-40% of potential revenue lost to unfilled spots)</li>
+                </ul>
+                <p style="margin-top: 1.5rem;"><strong>Our Solution:</strong> SpotPulse turns every empty spot into automatic revenue—24/7, across wellness, hospitality, F&B, and events.</p>
+            </div>
+
+            <h3>Regeneration Through Efficiency</h3>
+            <p><strong>Innerflect makes premium venues more profitable AND more regenerative simultaneously.</strong></p>
+
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">⚙️</div>
+                    <h3>OPERATIONS</h3>
+                    <p>Intelligent Systems</p>
+                    <p>Fill Empty Spots Automatically</p>
+                    <div class="pillar-price">SpotPulse</div>
+                    <small>Real-time detection + Smart Action Engine</small>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">🌱</div>
+                    <h3>REGENERATION</h3>
+                    <p>Better Utilization</p>
+                    <p>Less Waste, More Efficiency</p>
+                    <div class="pillar-price">Less Waste</div>
+                    <small>Food, laundry, utilities already allocated</small>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-icon">💰</div>
+                    <h3>REVENUE</h3>
+                    <p>Filled Spots Generate</p>
+                    <p>€9k–€86k/mo Extra</p>
+                    <div class="pillar-price">Same Costs</div>
+                    <small>Higher yield, better utilization</small>
+                </div>
+            </div>
+
+            <h3>Why This Works</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <h4>✅ No Trade-Offs</h4>
+                    <p>Filling empty spots isn't extractive—it maximizes value from resources already committed (staff, utilities, food prep, cleaning). Same costs, more revenue, less waste.</p>
+                </div>
+
+                <div class="card">
+                    <h4>📈 Scalable Without Complexity</h4>
+                    <p>SpotPulse works the same for 1 location or 50 locations. Integration takes 45-90min. ROI in 4-21 days. Pre-integrated with 87% of market.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🌱 Values-Aligned</h4>
+                    <p>Every filled spot means less food waste, less laundry waste, less energy waste. Higher yield per guest = fewer guests needed = less environmental impact per euro earned.</p>
+                </div>
+            </div>
+
+            <h3>The Intelligent Systems Approach</h3>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h4>Guest Side (Natural, Non-Intrusive)</h4>
+                    <ul>
+                        <li>Perfectly timed SMS or email</li>
+                        <li>Limited-release booking page badges</li>
+                        <li>Social story from venue's account</li>
+                        <li>Staff mention at reception</li>
+                        <li>Feels like opportunity, not spam</li>
+                    </ul>
+                </div>
+                <div class="solution">
+                    <h4>Venue Side (Beautiful, Actionable Dashboard)</h4>
+                    <ul>
+                        <li>Clean interface: red = urgent, green = filled</li>
+                        <li>Real-time revenue counter</li>
+                        <li>One-click action buttons</li>
+                        <li>Impact metrics (waste avoided, spots filled)</li>
+                        <li>Professional, modern, simple</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Smart Action Engine</strong> — Pattern recognition analyzing historical fill rates, urgency scoring, guest matching, partner network optimization. Fully automated or manual approval (owner chooses).</p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE CLIENTS -->
+        <section id="clients">
+            <h2>3. The Clients — Who We Serve</h2>
+            
+            <p>We serve regenerative/mindfulness physical sites—properties that need technology but fear it. These are businesses trying to change the world while drowning in operational chaos.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h4>🧘 Wellness Centers</h4>
+                    <p><span class="badge">10+ class spots</span> <span class="badge">€15+/class</span></p>
+                    <p><strong>Pain Points:</strong> Empty mats/slots 24-2h before class, lost instructor fees</p>
+                    <p><strong>SpotPulse Value:</strong> €14k-€58k/mo from filled spots</p>
+                </div>
+
+                <div class="card">
+                    <h4>🏨 Hostels & Boutique Hotels</h4>
+                    <p><span class="badge">20+ beds</span> <span class="badge">€25–€150/night</span></p>
+                    <p><strong>Pain Points:</strong> Mid-week empty beds, seasonal low periods</p>
+                    <p><strong>SpotPulse Value:</strong> €2.7k-€13k/mo from filled nights</p>
+                </div>
+
+                <div class="card">
+                    <h4>🍽️ Restaurants & F&B</h4>
+                    <p><span class="badge">15+ tables</span> <span class="badge">€30–€150/check</span></p>
+                    <p><strong>Pain Points:</strong> Dead zone hours (3-6pm), last-minute cancellations</p>
+                    <p><strong>SpotPulse Value:</strong> €12k-€58k/mo from filled tables</p>
+                </div>
+
+                <div class="card">
+                    <h4>🏖️ Beach Clubs & Event Venues</h4>
+                    <p><span class="badge">30+ capacity</span> <span class="badge">€50–€300/ticket</span></p>
+                    <p><strong>Pain Points:</strong> Unsold tickets 48h before event, empty daybeds in dead zones</p>
+                    <p><strong>SpotPulse Value:</strong> €68k-€340k/year from optimized inventory</p>
+                </div>
+
+                <div class="card">
+                    <h4>🏔️ Retreat Centers</h4>
+                    <p><span class="badge">15+ capacity</span> <span class="badge">€150+/night</span></p>
+                    <p><strong>Pain Points:</strong> Last-minute cancellations, shoulder season gaps</p>
+                    <p><strong>SpotPulse Value:</strong> €14k-€86k/mo from flash releases</p>
+                </div>
+
+                <div class="card">
+                    <h4>💼 Coworking & Studios</h4>
+                    <p><span class="badge">10+ hourly spots</span> <span class="badge">€15–€80/hour</span></p>
+                    <p><strong>Pain Points:</strong> Manually posting to fill slots, unpredictable bookings</p>
+                    <p><strong>SpotPulse Value:</strong> €8k-€36k/mo + time savings</p>
+                </div>
+
+                <div class="card">
+                    <h4>✈️ Travel Agencies</h4>
+                    <p><span class="badge">100+ bookings/month</span> <span class="badge">€500k+/year</span></p>
+                    <p><strong>Pain Points:</strong> Unsold tour spots, last-minute cancellations, seasonal gaps</p>
+                    <p><strong>SpotPulse Value:</strong> €12k-€45k/mo from filled tour spots</p>
+                </div>
+
+                <div class="card">
+                    <h4>🎨 Event Management Companies</h4>
+                    <p><span class="badge">20+ events/month</span> <span class="badge">€200k+/year</span></p>
+                    <p><strong>Pain Points:</strong> Unsold tickets 48h before event, empty workshop spots</p>
+                    <p><strong>SpotPulse Value:</strong> €15k-€55k/mo from optimized event inventory</p>
+                </div>
+            </div>
+
+            <div class="callout">
+                <h4>The Universal Problem</h4>
+                <p>All these venues share the same challenge: <strong>Empty spots are the silent killer. Every empty yoga mat, vacant bed, or unfilled table = €0 forever. Fixed costs are already paid. The opportunity cost is bleeding them dry.</strong></p>
+                <p style="margin-top: 1rem;"><strong>SpotPulse Solution:</strong> One dashboard, every empty spot becomes revenue—24/7. Works across all 4+ industries with the same platform.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: SOLUTIONS -->
+        <section id="solutions">
+            <h2>4. Problems and Solutions</h2>
+            
+            <h3>The Core Problem</h3>
+            <div class="callout">
+                <h4>What Venues Are Struggling With</h4>
+                <ul>
+                    <li><strong>Empty Spots = Lost Revenue:</strong> 20-40% of potential revenue lost to unfilled inventory</li>
+                    <li><strong>Fixed Costs Already Paid:</strong> Staff, utilities, food prep, cleaning—all allocated but unused</li>
+                    <li><strong>Manual Work:</strong> Posting to Instagram, texting past guests, hoping spots fill</li>
+                    <li><strong>No Intelligence:</strong> Don't know which spots are urgent, which guests to target, when to act</li>
+                    <li><strong>Waste:</strong> Food, laundry, energy wasted on empty spots</li>
+                    <li><strong>Low Yield:</strong> Same fixed costs, lower revenue per guest</li>
+                </ul>
+            </div>
+
+            <h3>The PRIMARY Solution: SpotPulse ⭐</h3>
+
+            <div class="callout">
+                <h3 style="font-size: 1.75rem; margin-bottom: 1rem;">Innerflect SpotPulse — Universal Revenue Optimization Platform</h3>
+                <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 1.5rem;"><strong>Tagline:</strong> "One Dashboard → Every Empty Spot Becomes Automatic Extra Revenue"</p>
+                
+                <div style="background: rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; border-left: 3px solid var(--accent);">
+                    <h4 style="color: white; margin-top: 0; font-size: 1.1rem;">💼 Sales Strategy</h4>
+                    <p style="color: white; margin-bottom: 0; line-height: 1.6;">SpotPulse is your gateway product. Fast ROI (4-21 days) gets you CEO meetings. Once you prove value, you're positioned to sell Impact OS, RegenOS, Booking Engine, and our full suite of solutions. <strong style="color: white;">One entry point, multiple expansion opportunities.</strong></p>
+                </div>
+                
+                <h4 style="margin-top: 2rem;">What It Solves</h4>
+                <div class="grid-2" style="margin-top: 1.5rem; gap: 1rem;">
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 1.25rem;">
+                        <ul style="margin: 0; padding-left: 1.25rem;">
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">Empty spots →</strong> <span style="color: rgba(255, 255, 255, 0.95);">34-72% fill rate improvement</span> <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9em;">(proven in 2025 Bali pilots)</span></li>
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">Manual work →</strong> <span style="color: rgba(255, 255, 255, 0.95);">Fully automated or one-click execution</span></li>
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">No intelligence →</strong> <span style="color: rgba(255, 255, 255, 0.95);">Smart Action Engine scores urgency + matches guests</span></li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 1.25rem;">
+                        <ul style="margin: 0; padding-left: 1.25rem;">
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">Lost revenue →</strong> <span style="color: rgba(255, 255, 255, 0.95);">€9k-€86k/mo additional revenue</span> <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.9em;">(depending on venue size)</span></li>
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">Waste →</strong> <span style="color: rgba(255, 255, 255, 0.95);">420kg+ food waste avoided/mo</span>, <span style="color: rgba(255, 255, 255, 0.95);">better resource utilization</span></li>
+                            <li style="margin-bottom: 0.75rem; line-height: 1.6;"><strong style="color: white;">Low yield →</strong> <span style="color: rgba(255, 255, 255, 0.95);">Higher revenue per guest = fewer guests needed</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>How It Works (3-Step System)</h4>
+                <div class="grid-3" style="margin-top: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: white; margin-top: 0;">Step 1: Integration</h4>
+                        <p style="color: white;"><strong>45-90min setup</strong> (we do it for them)</p>
+                        <p style="color: white;">Pre-integrated with 87% of market:</p>
+                        <ul style="color: white;">
+                            <li>Wellness: Mindbody, Glofox, WellnessLiving</li>
+                            <li>Hospitality: Cloudbeds, SiteMinder, Booking.com</li>
+                            <li>F&B: Resy, SevenRooms, Fareharbor</li>
+                            <li>Fallback: Google Calendar + Sheets</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: white; margin-top: 0;">Step 2: Detection</h4>
+                        <p style="color: white;"><strong>Runs every 10 min</strong></p>
+                        <ul style="color: white;">
+                            <li>Flags anything <70% sold 24-2h before start</li>
+                            <li>Scores urgency + historical fill chance</li>
+                            <li>Identifies best action to take</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h4 style="color: white; margin-top: 0;">Step 3: Action</h4>
+                        <p style="color: white;"><strong>6 Core Actions + 10 Add-Ons</strong></p>
+                        <ul style="color: white;">
+                            <li>Targeted email/SMS blast</li>
+                            <li>Controlled flash release</li>
+                            <li>Partner cross-promo</li>
+                            <li>Staff upsell script</li>
+                            <li>Social story template</li>
+                            <li>Loyalty credit nudge</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Value Delivered</h4>
+                <div class="grid-4">
+                    <div class="stat">
+                        <span class="stat-value">34-72%</span>
+                        <span class="stat-label">Fill Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">4-21</span>
+                        <span class="stat-label">Days ROI</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">€9k-€86k</span>
+                        <span class="stat-label">Revenue/mo</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">142%</span>
+                        <span class="stat-label">Net Retention</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Pricing:</strong> €1,490-€3,900/mo (flat, no rev-share) — Client keeps 100% of extra revenue</p>
+                <p><strong>Scale Path:</strong> €50M+ ARR by 2028 with 4-market expansion (Bali → Tulum → Byron Bay → Ibiza → Costa Rica)</p>
+            </div>
+
+            <div class="diagram-container">
+                <div class="mermaid">
+                    graph LR
+                        A[Empty Spots Detected<br/>Every 10 min] --> B[Smart Action Engine<br/>Scores Urgency]
+                        B --> C[6 Core Actions<br/>+ 10 Add-Ons]
+                        C --> D[34-72% Fill Rate<br/>€9k-€86k/mo Revenue]
+                        D --> E[Less Waste<br/>Better Utilization]
+                        E --> F[Regeneration<br/>Through Efficiency]
+                </div>
+            </div>
+
+            <h3>Future Products (Built After SpotPulse Proves Market)</h3>
+            <div class="callout" style="margin-bottom: 2rem;">
+                <h4>💼 Expansion Strategy for Sellers</h4>
+                <p><strong>SpotPulse gets you in the door. These products expand the relationship.</strong> Once CEOs see SpotPulse ROI, they're ready to invest in Impact OS, RegenOS, and Booking Engine. One entry point, multiple expansion opportunities.</p>
+            </div>
+            <div class="grid-2">
+                <div class="callout">
+                    <h4>SpotPulse Impact OS</h4>
+                    <p>Adds comprehensive impact tracking to SpotPulse: carbon saved, water/energy efficiency, social impact metrics. Beautiful monthly reports for marketing.</p>
+                    <p><strong>Pricing:</strong> +€500-€2k/mo on top of SpotPulse base</p>
+                    <p style="margin-top: 0.5rem;"><strong>Sales Note:</strong> Natural upsell after SpotPulse proves value</p>
+                </div>
+
+                <div class="callout">
+                    <h4>SpotPulse RegenOS</h4>
+                    <p>Full operational intelligence for regenerative properties: farm/land optimization, guest journey personalization, staff scheduling, full triple-bottom-line dashboard.</p>
+                    <p><strong>Pricing:</strong> €8k-€25k/mo (for premium properties already using SpotPulse)</p>
+                    <p style="margin-top: 0.5rem;"><strong>Sales Note:</strong> Premium upsell for properties ready to scale operations</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: PATH FORWARD -->
+        <section id="path-forward">
+            <h2>5. The Path Forward — SpotPulse Go-to-Market</h2>
+            
+            <div class="callout">
+                <p><strong>SpotPulse is Our Main Application.</strong> Universal problem (empty spots), universal solution (same platform across 4+ industries), immediate ROI (4-21 days), pre-integrated with 87% of market.</p>
+                <p style="margin-top: 1rem;"><strong>💼 For Sellers:</strong> SpotPulse is your entry point to CEO conversations. Fast ROI gets you meetings. Once you prove value, you're positioned to sell Impact OS, RegenOS, Booking Engine, and our full suite. One product opens doors to multiple solutions.</p>
+            </div>
+
+            <h3>Why SpotPulse Works as Main Application</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <h4>🎯 Universal Problem</h4>
+                    <p>Every venue with time-based inventory loses 20-40% to empty spots. Same problem across wellness, hospitality, F&B, events, coworking.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🚀 Immediate ROI</h4>
+                    <p>4-21 days to breakeven (not months or years). Fast ROI makes implementation cycle short. Clients see results before they even finish onboarding.</p>
+            </div>
+
+                <div class="card">
+                    <h4>🔌 Pre-Integrated</h4>
+                    <p>87% of market already uses compatible systems (Mindbody, Cloudbeds, Resy, Google Calendar). No "we need custom connector" objection.</p>
+                </div>
+
+                <div class="card">
+                    <h4>📈 Scalable Platform</h4>
+                    <p>One platform, adaptable to 4+ verticals. Team builds once, works across multiple industries.</p>
+            </div>
+
+            <div class="card">
+                    <h4>🤖 Smart Automation</h4>
+                    <p>Smart Action Engine handles pattern recognition, urgency scoring, guest matching automatically. Reduces manual work for venues.</p>
+            </div>
+
+                <div class="card">
+                    <h4>🌱 Values-Aligned</h4>
+                    <p>Filled spots = less waste, better resource utilization, more sustainable operations. Efficiency leads to regeneration.</p>
+            </div>
+
+                <div class="card">
+                    <h4>💪 Network Effects</h4>
+                    <p>Partner sharing creates viral loop. Each new venue adds value to existing ones through cross-promotion and inventory swaps.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🔓 Gateway Product & CEO Access</h4>
+                    <p>4-21 day ROI gets you CEO meetings. Once you prove SpotPulse value, you're positioned to sell Impact OS, RegenOS, Booking Engine, and our full suite. One entry point, multiple expansion opportunities.</p>
+                </div>
+            </div>
+
+            <div class="callout">
+                <h4>The Path Forward</h4>
+                <p><strong>Start narrow (Bali), prove fast ROI (4-21 days), same platform works across 4 verticals, network effects compound, expansion products fund themselves.</strong></p>
+                <p>This is how we build a sustainable, scalable business that serves regeneration through efficiency.</p>
+            </div>
+
+            <h3>Real-World Metrics (2025 Bali Pilots)</h3>
+            <div class="grid-4">
+                <div class="stat">
+                    <span class="stat-value">34-72%</span>
+                    <span class="stat-label">Fill Rate Improvement</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">4-21</span>
+                    <span class="stat-label">Days to ROI</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">€9k-€86k</span>
+                    <span class="stat-label">Revenue Lift/mo</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">142%</span>
+                    <span class="stat-label">Net Retention</span>
+                </div>
+                </div>
+
+            <h3>Team Structure & This Week's Focus</h3>
+            
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>👥 Team Roles</h4>
+                <p><strong>We have a team already in place. Here are 5 possible ways to organize our 3 tech roles:</strong></p>
+                
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 1: By System Layer</h4>
+                    <div class="grid-3" style="margin-bottom: 3rem;">
+                        <div class="card">
+                            <h4>Integration & Data Developer</h4>
+                            <ul>
+                                <li>API integrations (Mindbody, Cloudbeds, Resy, Google Calendar)</li>
+                                <li>Real-time data sync and processing</li>
+                                <li>Empty-spot detection pipeline</li>
+                                <li>Connector maintenance and monitoring</li>
+                            </ul>
+                </div>
+                        <div class="card" style="border: 2px solid var(--accent);">
+                            <h4>Platform Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
+                            <ul>
+                                <li><strong>Leadership:</strong> Team coordination, technical direction, project oversight</li>
+                                <li><strong>Client-facing:</strong> Direct client communication, requirement gathering, demo presentations</li>
+                                <li>Dashboard foundation and backend APIs (can code but focuses on architecture)</li>
+                                <li>System reliability and performance monitoring</li>
+                                <li>Translates client needs into technical specifications</li>
+                            </ul>
+                </div>
+                        <div class="card">
+                            <h4>Intelligence & Automation Developer</h4>
+                            <ul>
+                                <li>Smart Action Engine development</li>
+                                <li>Urgency scoring algorithms</li>
+                                <li>Guest matching and pattern recognition</li>
+                                <li>Automation workflows and execution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 2: By Product Flow</h4>
+                    <div class="grid-3" style="margin-bottom: 3rem;">
+                        <div class="card">
+                            <h4>Detection & Integration Developer</h4>
+                            <ul>
+                                <li>Real-time empty-spot detection</li>
+                                <li>API integrations and data connections</li>
+                                <li>Data pipeline and processing</li>
+                                <li>System monitoring and alerts</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="border: 2px solid var(--accent);">
+                            <h4>Platform Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
+                            <ul>
+                                <li><strong>Leadership:</strong> Product direction, team coordination, sprint planning</li>
+                                <li><strong>Client-facing:</strong> Client meetings, feedback sessions, feature prioritization</li>
+                                <li>Dashboard UI/UX development (can code but focuses on design and user experience)</li>
+                                <li>Revenue tracking and metrics visualization</li>
+                                <li>Bridges client needs with technical implementation</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>Intelligence & Action Developer</h4>
+                            <ul>
+                                <li>Smart Action Engine logic</li>
+                                <li>Urgency scoring and prioritization</li>
+                                <li>Action execution and automation</li>
+                                <li>Partner network integration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 3: By Technical Domain</h4>
+                    <div class="grid-3" style="margin-bottom: 3rem;">
+                        <div class="card">
+                            <h4>Backend & Integration Developer</h4>
+                            <ul>
+                                <li>Server-side architecture</li>
+                                <li>API integrations (all platforms)</li>
+                                <li>Data processing and storage</li>
+                                <li>System infrastructure</li>
+                            </ul>
+                </div>
+                        <div class="card" style="border: 2px solid var(--accent);">
+                            <h4>Frontend Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
+                            <ul>
+                                <li><strong>Leadership:</strong> UI/UX direction, design system, team coordination</li>
+                                <li><strong>Client-facing:</strong> User testing, feedback collection, demo walkthroughs</li>
+                                <li>Dashboard UI/UX design and development (can code but focuses on design)</li>
+                                <li>Visualization (heat maps, charts) and user experience</li>
+                                <li>Translates client feedback into design improvements</li>
+                            </ul>
+                </div>
+                        <div class="card">
+                            <h4>Intelligence & Automation Developer</h4>
+                            <ul>
+                                <li>Smart Action Engine algorithms</li>
+                                <li>Machine learning and pattern recognition</li>
+                                <li>Automation logic and workflows</li>
+                                <li>Optimization systems</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 4: By Responsibility Scope</h4>
+                    <div class="grid-3" style="margin-bottom: 3rem;">
+                        <div class="card" style="border: 2px solid var(--accent);">
+                            <h4>Integration Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
+                            <ul>
+                                <li><strong>Leadership:</strong> Integration strategy, team coordination, technical roadmap</li>
+                                <li><strong>Client-facing:</strong> Onboarding calls, integration setup coordination, client support</li>
+                                <li>All API integrations (Mindbody, Cloudbeds, Resy, etc.) - can code but focuses on configuration</li>
+                                <li>Data synchronization and real-time updates</li>
+                                <li>Client integration troubleshooting and relationship management</li>
+                            </ul>
+                </div>
+                        <div class="card">
+                            <h4>Platform Developer</h4>
+                            <ul>
+                                <li>Core SpotPulse platform development</li>
+                                <li>Dashboard and user interface</li>
+                                <li>Revenue tracking and metrics display</li>
+                                <li>System architecture and scalability</li>
+                            </ul>
+                </div>
+                        <div class="card">
+                            <h4>Intelligence Developer</h4>
+                            <ul>
+                                <li>Smart Action Engine development</li>
+                                <li>Urgency scoring and prioritization algorithms</li>
+                                <li>Guest matching and recommendation systems</li>
+                                <li>Automation and action execution</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 style="color: white; margin-top: 0; margin-bottom: 1.5rem; font-weight: 600;">Option 5: By Value Stream</h4>
+                    <div class="grid-3" style="margin-bottom: 3rem;">
+                        <div class="card">
+                            <h4>Data & Detection Developer</h4>
+                            <ul>
+                                <li>Empty-spot detection system</li>
+                                <li>Real-time data processing</li>
+                                <li>API integrations and connectors</li>
+                                <li>Data quality and validation</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="border: 2px solid var(--accent);">
+                            <h4>UX Lead & Client Relations <span style="color: var(--accent); font-size: 0.9em;">(Less coding-intensive)</span></h4>
+                            <ul>
+                                <li><strong>Leadership:</strong> Product vision, user experience strategy, team alignment</li>
+                                <li><strong>Client-facing:</strong> User research, client interviews, feature validation, demos</li>
+                                <li>Dashboard design and development (can code but focuses on UX/UI)</li>
+                                <li>Visualization and heat maps, user interactions and workflows</li>
+                                <li>Champions client needs and ensures product-market fit</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>Automation & Intelligence Developer</h4>
+                            <ul>
+                                <li>Smart Action Engine core logic</li>
+                                <li>Urgency scoring and decision-making</li>
+                                <li>Action execution and automation</li>
+                                <li>Partner network and distribution logic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid rgba(255, 255, 255, 0.2);">
+                    <h4>📊 Other Roles</h4>
+                    <div class="grid-3" style="margin-top: 1rem;">
+                        <div class="card">
+                            <h4>Sales & Partnerships</h4>
+                            <ul>
+                                <li>Client relationships</li>
+                                <li>Integrations coordination</li>
+                                <li>Partner network development</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>Internal Organization</h4>
+                            <ul>
+                                <li>Project management</li>
+                                <li>Team coordination</li>
+                                <li>Process optimization</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h4>Support & Infrastructure</h4>
+                            <ul>
+                                <li>Server management</li>
+                                <li>Monitoring and technical support</li>
+                                <li>System reliability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>This Week's Focus</h3>
+            
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>🎯 This Week's Goal</h4>
+                <p style="font-size: 1.25rem; margin: 1rem 0;"><strong>Develop the SpotPulse website and dashboard prototype.</strong></p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <h4>⏰ Time Commitment</h4>
+                    <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin: 0.5rem 0;">3-4 hours/day maximum</p>
+                    <ul>
+                        <li>Focused, high-impact work</li>
+                        <li>No burnout, no endless hours</li>
+                        <li>Sustainable pace for long-term success</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>🤖 AI Agent Leverage</h4>
+                    <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin: 0.5rem 0;">10 AI agents working for us</p>
+                    <ul>
+                        <li>Each specialized in different tasks</li>
+                        <li>Professional quality, scalable results</li>
+                        <li>Intelligent automation handles repetitive work</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>💡 Quality of Life Vision</h4>
+                <p style="font-size: 1.1rem;"><strong>Working less, outputting like lords:</strong> Our intention is to achieve quality of life through intelligent leverage.</p>
+            </div>
+
+            <h4 style="margin-top: 2rem; margin-bottom: 1rem;">🚀 This Week's Deliverables</h4>
+            <div class="grid-2" style="margin-top: 1rem;">
+                <div class="card">
+                    <h4 style="color: var(--primary);">1. Website</h4>
+                    <p>Professional SpotPulse landing page with clear value proposition, integration options, and team-focused messaging.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--primary);">2. Dashboard Prototype</h4>
+                    <p>Functional dashboard showing empty spot detection, heat map (red/yellow/green), revenue counter, one-click actions, impact metrics.</p>
+                </div>
+            </div>
+
+            <h3>How We Team Up for Quality of Life</h3>
+            
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>🤝 Our Approach to Sustainable Excellence</h4>
+                <p><strong>We believe in working intelligently, not endlessly. Our team structure and processes are designed for quality of life while delivering exceptional results.</strong></p>
+                </div>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <h4>👥 Clear Roles & Focus</h4>
+                    <p>Each team member focuses on what they do best. No overlapping responsibilities, no confusion about ownership. Clear boundaries mean clear accountability and faster execution.</p>
+                </div>
+
+                <div class="card">
+                    <h4>🤖 AI Agents Handle Repetition</h4>
+                    <p>We leverage 10 specialized AI agents to handle repetitive, time-consuming tasks. This frees the team to focus on strategy, creativity, and high-value decisions that require human insight.</p>
+                </div>
+
+                <div class="card">
+                    <h4>✅ Review & Refine</h4>
+                    <p>Human oversight ensures quality at every step. AI agents execute at scale, but humans review, refine, and ensure everything meets our standards. Quality control is never automated away.</p>
+                </div>
+
+                <div class="card">
+                    <h4>⏰ 3-4 Hours/Day Maximum</h4>
+                    <p>Sustainable pace, high impact, no burnout. We work focused, intentional hours that maximize output without sacrificing well-being. Long-term success requires sustainable practices.</p>
+                </div>
+            </div>
+
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>⚡ Output Like Lords</h4>
+                <p>Professional quality, scalable results, intelligent leverage. By combining clear roles, AI automation, and human oversight, we achieve output that rivals teams working 10+ hours/day—but sustainably.</p>
+            </div>
+
+            <div class="grid-2" style="margin-top: 2rem;">
+                <div class="card">
+                    <h4>🤖 What AI Agents Handle</h4>
+                    <ul>
+                        <li>Code generation and boilerplate</li>
+                        <li>Documentation and writing</li>
+                        <li>Testing and quality checks</li>
+                        <li>Data processing and analysis</li>
+                        <li>Repetitive integration tasks</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h4>👤 What Humans Focus On</h4>
+                    <ul>
+                        <li>Strategic decisions and direction</li>
+                        <li>Client relationships and partnerships</li>
+                        <li>Quality control and refinement</li>
+                        <li>Creative problem-solving</li>
+                        <li>Team coordination and culture</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="callout" style="margin-top: 2rem;">
+                <h4>🎯 Our Goal</h4>
+                <p><strong>Build SpotPulse efficiently, prove the model, scale with AI agents doing the work while the team focuses on strategy, relationships, and quality control.</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <strong>Innerflect</strong>
+        <p>Systems with Soul</p>
+        <p>Inner Reflection → Outer Regeneration</p>
+        <p>Creative Technology for Regenerative Futures</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling and active nav highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('section[id]');
+
+            // Smooth scroll
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const headerOffset = 80;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Highlight active section
+            function highlightActiveSection() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const sectionHeight = section.clientHeight;
+                    if (sectionTop <= 150 && sectionTop + sectionHeight > 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightActiveSection);
+            highlightActiveSection();
+        });
+    </script>
 </body>
 </html>
-
