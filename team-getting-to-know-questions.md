@@ -78,9 +78,9 @@
 
 ## 📝 Quick Wrap-Up Questions
 
-31. **What's your availability?** (hours per day/week, timezone, preferred working hours)
-32. **What's the best way to reach you?** (Slack, email, etc.)
-33. **Any concerns or things we should know about working together?**
+20. **What's your availability?** (hours per day/week, timezone, preferred working hours)
+21. **What's the best way to reach you?** (Slack, email, etc.)
+22. **Any concerns or things we should know about working together?**
 
 ---
 
