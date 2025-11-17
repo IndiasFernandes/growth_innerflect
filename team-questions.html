@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Getting-to-Know Questions — Innerflect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c5f4e;
+            --primary-light: #4a9d7f;
+            --primary-dark: #1a3d2e;
+            --accent: #d4a574;
+            --accent-light: #f5e6d3;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f9fafb;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg-alt);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            padding: 0.5rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: var(--accent-light);
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .container > section + section {
+            margin-top: 4rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 4rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        section:first-of-type {
+            margin-top: 0;
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            width: 100%;
+        }
+
+        section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 2rem 0 1rem;
+            padding-top: 1rem;
+        }
+
+        section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* Callout Box */
+        .callout {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid var(--accent);
+        }
+
+        .callout h3, .callout h4 {
+            color: white;
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        .callout p {
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+        }
+
+        .callout ul {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .callout li {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .callout strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+            font-weight: 600;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* Card */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            color: var(--text);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            border-color: var(--primary-light);
+        }
+
+        .card h3, .card h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--text);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-top: 0;
+        }
+
+        .card ul {
+            color: var(--text);
+            line-height: 1.7;
+            margin-top: 0.75rem;
+            margin-bottom: 0;
+            padding-left: 1.25rem;
+        }
+
+        .card li {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .card strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        /* Question Number Badge */
+        .question-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+            vertical-align: middle;
+        }
+
+        /* Time Badge */
+        .time-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Break Section */
+        .break-section {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .break-section h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        .break-section p {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tip-card {
+            background: var(--bg-card);
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .tip-card strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .grid-2, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo-horizontal-black.png" alt="Innerflect">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Overview</a></li>
+                <li><a href="team-questions.html" class="active">Team Questions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Team Getting-to-Know Questions</h1>
+            <p>Two 35-minute sessions with a 10-minute break</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Session 1 -->
+        <section>
+            <h2><span class="question-number">1</span> Session 1: Finishing Details <span class="time-badge">35 min</span></h2>
+            <p style="font-style: italic; color: var(--text-light); margin-bottom: 2rem;">Focus: Working style, focus areas, availability, main strengths</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3><span class="question-number">1</span> Main Strengths <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>What are your strongest technical skills and what do you bring to a team?</strong></p>
+                    <ul>
+                        <li>Technical skills: frontend, backend, design, data analysis, etc.</li>
+                        <li>Technologies/tools you feel most confident with</li>
+                        <li>Something technical you've built or worked on that you're proud of</li>
+                        <li>What you bring to a team: problem-solving, creativity, organization, communication</li>
+                        <li>What type of work do you do best? (building from scratch, debugging, optimizing, designing)</li>
+                        <li>When do you feel most productive/creative?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">2</span> Focus Areas & Interests <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>What areas do you want to focus on or get better at, and what part of SpotPulse/Innerflect interests you most?</strong></p>
+                    <ul>
+                        <li>Areas you want to focus on or improve</li>
+                        <li>What part of SpotPulse/Innerflect interests you most? (e.g., dashboard UI, backend logic, integrations, AI/automation)</li>
+                        <li>What kind of problems do you enjoy solving?</li>
+                        <li>What would you like to learn or explore more?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">3</span> Working Style & Preferences <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>How do you prefer to work, and what helps you do your best work?</strong></p>
+                    <ul>
+                        <li>Work preference: solo deep work vs. collaboration, pair programming, async communication, regular syncs</li>
+                        <li>What helps you do your best work? (clear requirements, autonomy, collaboration, feedback)</li>
+                        <li>How do you like to receive feedback? (direct vs. written, in meetings vs. async)</li>
+                        <li>Communication style: frequent updates, check-ins, async messages, detailed docs</li>
+                        <li>What areas do you find challenging or want to improve?</li>
+                        <li>What kind of support do you need to do your best work?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">4</span> Availability & Logistics <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>What's your availability and how do we best work together?</strong></p>
+                    <ul>
+                        <li>Availability: hours per day/week, timezone, preferred working hours</li>
+                        <li>What's the best way to reach you? (Slack, email, etc.)</li>
+                        <li>Any concerns or things we should know about working together?</li>
+                        <li>What slows you down or frustrates you in your work?</li>
+                        <li>What would make your work life easier?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Break -->
+        <div class="break-section">
+            <h3>☕ Break</h3>
+            <p><strong>10 minutes</strong> — Take notes, reflect, prepare for session 2</p>
+        </div>
+
+        <!-- Session 2 -->
+        <section>
+            <h2><span class="question-number">2</span> Session 2: Solution & Approach <span class="time-badge">35 min</span></h2>
+            <p style="font-style: italic; color: var(--text-light); margin-bottom: 2rem;">Focus: What we decide together, how to go about it, how to manage ourselves through the week</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3><span class="question-number">5</span> Role & Contribution <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>What role do you see yourself taking, and what's your preference?</strong></p>
+                    <ul>
+                        <li>What role do you see yourself taking? (lead developer, specialist, generalist)</li>
+                        <li>Preference:
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>More coding-intensive work</li>
+                                <li>Leading/coordinating (less coding, more planning/client-facing)</li>
+                                <li>Mix of both</li>
+                            </ul>
+                        </li>
+                        <li>Are you comfortable with client-facing work? (meetings, demos, feedback sessions)</li>
+                        <li>What's your ideal balance between coding and other responsibilities?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">6</span> SpotPulse-Specific & Role Options <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>Looking at SpotPulse, what excites you most, and which tech role option resonates with you?</strong></p>
+                    <ul>
+                        <li>What part of SpotPulse excites you most?</li>
+                        <li>Which tech role option resonates with you?
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Option 1: By System Layer (Frontend/Backend/Intelligence)</li>
+                                <li>Option 2: By Product Flow (Detection/Platform/Intelligence)</li>
+                                <li>Option 3: By Technical Domain (Backend/Integration, Frontend/Client Relations, Intelligence)</li>
+                                <li>Option 4: By Responsibility Scope (Integration Lead, Platform Developer, Intelligence)</li>
+                                <li>Option 5: By Feature Area (Core Platform, Integrations, Intelligence)</li>
+                            </ul>
+                        </li>
+                        <li>What's your experience with:
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>API integrations (Mindbody, Cloudbeds, Resy, etc.)</li>
+                                <li>Dashboard/UI development</li>
+                                <li>Data visualization (charts, heat maps)</li>
+                                <li>Real-time systems</li>
+                                <li>Automation/AI</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">7</span> Decision-Making & Collaboration <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>How do we decide together and approach the work?</strong></p>
+                    <ul>
+                        <li>How do you prefer to make decisions? (consensus, lead decides, discuss then decide)</li>
+                        <li>How do you like to approach new problems or features? (research first, dive in, discuss approach)</li>
+                        <li>What's your approach to technical decisions? (documentation, proof of concept, team discussion)</li>
+                        <li>How do you handle disagreements or different opinions?</li>
+                        <li>What makes collaboration work well for you?</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><span class="question-number">8</span> Week Management & Workflow <span class="time-badge">8-9 min</span></h3>
+                    <p><strong>How do we manage ourselves through the week?</strong></p>
+                    <ul>
+                        <li>How do you prefer to plan and track work? (daily standups, weekly planning, task boards, async updates)</li>
+                        <li>What's your ideal communication rhythm? (daily check-ins, weekly syncs, as-needed)</li>
+                        <li>How do you like to share progress and blockers?</li>
+                        <li>What helps you stay aligned with the team?</li>
+                        <li>How do you prefer to handle changes in priorities or scope?</li>
+                        <li>What questions do you have about the project or team?</li>
+                        <li>Is there anything else you'd like us to know about you, your work style, or what you're looking for?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section>
+            <h2>💡 Tips for the Meeting</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <strong>Keep it conversational</strong>
+                    <p>Don't go through questions like a checklist</p>
+                </div>
+                <div class="tip-card">
+                    <strong>Let people expand</strong>
+                    <p>If someone shares something interesting, follow up</p>
+                </div>
+                <div class="tip-card">
+                    <strong>Take notes</strong>
+                    <p>Capture key points about strengths, preferences, concerns</p>
+                </div>
+                <div class="tip-card">
+                    <strong>Be flexible</strong>
+                    <p>Skip questions that don't apply or aren't relevant</p>
+                </div>
+                <div class="tip-card">
+                    <strong>End with action items</strong>
+                    <p>What happens next? When do we start?</p>
+                </div>
+                <div class="tip-card">
+                    <strong>Use the break</strong>
+                    <p>Take notes, reflect, prepare for session 2</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Reference -->
+        <section>
+            <h2>📋 Quick Reference</h2>
+            <div class="grid-2">
+                <div class="callout">
+                    <h3>Session 1 (35 min)</h3>
+                    <ul>
+                        <li>1. Main Strengths</li>
+                        <li>2. Focus Areas & Interests</li>
+                        <li>3. Working Style & Preferences</li>
+                        <li>4. Availability & Logistics</li>
+                    </ul>
+                </div>
+                <div class="callout">
+                    <h3>Session 2 (35 min)</h3>
+                    <ul>
+                        <li>5. Role & Contribution</li>
+                        <li>6. SpotPulse-Specific & Role Options</li>
+                        <li>7. Decision-Making & Collaboration</li>
+                        <li>8. Week Management & Workflow</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box" style="margin-top: 2rem; text-align: center;">
+                <h4>Total Time: ~80 minutes</h4>
+                <p style="margin-bottom: 0;">35 min + 10 min break + 35 min</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Innerflect. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
