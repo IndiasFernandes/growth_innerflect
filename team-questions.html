@@ -261,6 +261,13 @@
             margin: 2rem 0;
         }
 
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -543,7 +550,7 @@
             <h2><span class="question-number">2</span> Session 2: Solution & Approach <span class="time-badge">35 min</span></h2>
             <p style="font-style: italic; color: var(--text-light); margin-bottom: 2rem;">Focus: What we decide together, how to go about it, how to manage ourselves through the week</p>
 
-            <div class="grid-2">
+            <div class="grid-3" style="margin-bottom: 2rem;">
                 <div class="card">
                     <h3><span class="question-number">5</span> Role & Contribution <span class="time-badge">8-9 min</span></h3>
                     <p><strong>What role do you see yourself taking, and what's your preference?</strong></p>
@@ -598,20 +605,20 @@
                         <li>What makes collaboration work well for you?</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="card">
-                    <h3><span class="question-number">8</span> Week Management & Workflow <span class="time-badge">8-9 min</span></h3>
-                    <p><strong>How do we manage ourselves through the week?</strong></p>
-                    <ul>
-                        <li>How do you prefer to plan and track work? (daily standups, weekly planning, task boards, async updates)</li>
-                        <li>What's your ideal communication rhythm? (daily check-ins, weekly syncs, as-needed)</li>
-                        <li>How do you like to share progress and blockers?</li>
-                        <li>What helps you stay aligned with the team?</li>
-                        <li>How do you prefer to handle changes in priorities or scope?</li>
-                        <li>What questions do you have about the project or team?</li>
-                        <li>Is there anything else you'd like us to know about you, your work style, or what you're looking for?</li>
-                    </ul>
-                </div>
+            <div class="card" style="max-width: 100%;">
+                <h3><span class="question-number">8</span> Week Management & Workflow <span class="time-badge">8-9 min</span></h3>
+                <p><strong>How do we manage ourselves through the week?</strong></p>
+                <ul>
+                    <li>How do you prefer to plan and track work? (daily standups, weekly planning, task boards, async updates)</li>
+                    <li>What's your ideal communication rhythm? (daily check-ins, weekly syncs, as-needed)</li>
+                    <li>How do you like to share progress and blockers?</li>
+                    <li>What helps you stay aligned with the team?</li>
+                    <li>How do you prefer to handle changes in priorities or scope?</li>
+                    <li>What questions do you have about the project or team?</li>
+                    <li>Is there anything else you'd like us to know about you, your work style, or what you're looking for?</li>
+                </ul>
             </div>
         </section>
 
